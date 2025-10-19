@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday Shraddha ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+body {
+  font-family: 'Segoe UI', Tahoma, sans-serif;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+  background:linear-gradient(135deg,#ffd6e8,#ffe6f2);
+}
+section {
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+  flex-wrap:wrap;
+  text-align:center;
+  position:relative;
+  opacity:0;
+  transform:translateY(50px);
+  transition: all 1s ease;
+}
+section.visible {
+  opacity:1;
+  transform:translateY(0);
+}
+section h1 {
+  width:100%;
+  font-size:2rem;
+  color:#e60073;
+  margin-bottom:20px;
+  animation:fadeInDown 1.2s ease;
+}
+
+.container {display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:20px;max-width:900px;width:100%;}
+.left {display:flex;flex-direction:column;align-items:center;flex:1;min-width:220px; position:relative;}
+.left img {width:220px;height:220px;border-radius:15px;object-fit:cover;border:4px solid white;box-shadow:0 4px 20px rgba(0,0,0,0.2);}
+.sparkle {
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  border-radius:15px;
+  pointer-events:none;
+  overflow:hidden;
+}
+.star {
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:white;
+  border-radius:50%;
+  opacity:0;
+  box-shadow: 0 0 6px 2px #fff;
+  animation: twinkle 2s infinite;
+}
+@keyframes twinkle {
+  0%,100% {opacity:0; transform:scale(0);}
+  50% {opacity:1; transform:scale(1);}
+}
+
+.quote {margin-top:10px;font-style:italic;color:#555;font-size:0.95rem;max-width:220px;}
+.right {flex:1.3;min-width:250px;background:rgba(255,255,255,0.75);padding:20px;border-radius:15px;box-shadow:0 4px 10px rgba(0,0,0,0.1);font-size:1rem;line-height:1.6;color:#333;}
+.heart {position:fixed;bottom:-10px;font-size:22px;color:#ff5ea2;animation:floatUp 6s linear infinite;opacity:0.8;pointer-events:none;}
+.confetti {
+  position:fixed;
+  top:0;
+  width:10px;
+  height:10px;
+  background-color:red;
+  opacity:0.9;
+  pointer-events:none;
+  z-index:9999;
+  border-radius:50%;
+}
+
+@keyframes fadeInDown {from{opacity:0;transform:translateY(-30px);} to{opacity:1;transform:translateY(0);} }
+@keyframes zoomIn {from{transform:scale(0.8);opacity:0;} to{transform:scale(1);opacity:1;} }
+@keyframes floatUp {0%{transform:translateY(0) scale(1);opacity:0.9;}100%{transform:translateY(-100vh) scale(1.4);opacity:0;} }
+
+@media(max-width:600px){.container{flex-direction:column;gap:20px;}.left img{width:180px;height:180px;}}
+
+#intro-screen {position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#ffb6d9,#ffd6e8);display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:999;}
+#start-btn {background:#e60073;color:white;border:none;padding:12px 28px;font-size:1.1rem;border-radius:30px;cursor:pointer;box-shadow:0 4px 10px rgba(0,0,0,0.2);transition:transform 0.2s;}
+#start-btn:hover {transform:scale(1.05);}
+</style>
+</head>
+<body>
+
+<!-- Intro Tap Screen -->
+<div id="intro-screen">
+  <h2>💖 Tap to Start the Surprise 💖</h2>
+  <button id="start-btn">Start 🎶</button>
+</div>
+
+<audio id="bg-music" loop>
+  <source src="bg-music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- First Section: Romantic -->
+<section id="section1">
+  <h1>🎉 Happy Birthday Shraddha ❤️</h1>
+  <div class="container" id="container1">
+    <div class="left">
+      <img src="her.jpg" alt="Her Photo">
+      <div class="sparkle" id="sparkle-container"></div>
+      <div class="quote">"In the room full of arts, I would stare at you.. 🌸"</div>
+    </div>
+    <div class="right">
+      <p>
+        All this, I did without you ... is my loss 💖<br><br>
+        All this, I want to do with you .., will be my gain ✨<br><br>
+        All this world, I would gladly have forgotten for the sake of one minute of your company 🎂❤️<br><br>
+        Happy Birthday Shraddhe 💖
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Second Section: Cricket & Poetry -->
+<section id="section2">
+  <h1>🏏 Your Cricket Favorites!</h1>
+  <div class="container" id="container2">
+    <div class="left">
+      <img src="virat.jpg" alt="Virat Kohli">
+      <img src="klrahul.jpg" alt="KL Rahul">
+    </div>
+    <div class="right">
+      <p>
+        You are beautiful as Kohli's cover drive 💖<br><br>
+        You are prettier than KL Rahul's flick shot <br>
+        You make every moment unforgettable 🌸<br><br>
+        Happy Birthday, my love 🎂❤️
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+const startBtn = document.getElementById('start-btn');
+const introScreen = document.getElementById('intro-screen');
+const music = document.getElementById('bg-music');
+const sections = document.querySelectorAll('section');
+const sparkleContainer = document.getElementById('sparkle-container');
+
+// Start button event
+startBtn.addEventListener('click', () => {
+  music.play().catch(err=>console.log(err));
+  introScreen.style.display = 'none';
+  setInterval(createHeart, 600);
+  setInterval(createConfetti, 200);
+  setInterval(createSparkle, 400);
+  revealSections();
+});
+
+// Floating hearts
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.classList.add('heart');
+  heart.textContent = '❤️';
+  heart.style.left = Math.random()*100+'vw';
+  heart.style.fontSize = (15 + Math.random()*20)+'px';
+  heart.style.animationDuration = (5 + Math.random()*4)+'s';
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),8000);
+}
+
+// Confetti effect
+function createConfetti() {
+  const confetti = document.createElement('div');
+  confetti.classList.add('confetti');
+  confetti.style.backgroundColor = `hsl(${Math.random()*360}, 100%, 50%)`;
+  confetti.style.left = Math.random()*100 + 'vw';
+  confetti.style.width = confetti.style.height = (5 + Math.random()*8) + 'px';
+  document.body.appendChild(confetti);
+  
+  confetti.animate([
+    { transform: `translateY(0) rotate(0deg)` },
+    { transform: `translateY(100vh) rotate(${Math.random()*360}deg)` }
+  ], {
+    duration: 4000 + Math.random()*3000,
+    easing: 'linear'
+  });
+
+  setTimeout(()=>confetti.remove(),7000);
+}
+
+// Sparkle effect
+function createSparkle() {
+  const star = document.createElement('div');
+  star.classList.add('star');
+  star.style.left = Math.random()*100+'%';
+  star.style.top = Math.random()*100+'%';
+  star.style.animationDuration = (1 + Math.random()*1.5)+'s';
+  sparkleContainer.appendChild(star);
+  setTimeout(()=>star.remove(),2000);
+}
+
+// Scroll reveal effect
+function revealSections() {
+  sections.forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if(rect.top < window.innerHeight - 100) {
+      section.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', revealSections);
+window.addEventListener('load', revealSections);
+
+</script>
+</body>
+</html>
